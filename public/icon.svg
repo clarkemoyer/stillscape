@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Stillscape">
+  <rect width="64" height="64" rx="14" fill="#0a1712"/>
+  <g fill="none" stroke="#5fd6c4" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M32 11 L23 27 H41 Z"/>
+    <path d="M32 21 L19 40 H45 Z"/>
+    <path d="M32 31 L15 53 H49 Z"/>
+  </g>
+  <rect x="29.6" y="52" width="4.8" height="7" rx="1.2" fill="#5fd6c4"/>
+</svg>

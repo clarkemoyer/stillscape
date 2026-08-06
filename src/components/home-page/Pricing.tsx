@@ -28,45 +28,46 @@ interface Tier {
 
 const tiers: Tier[] = [
   {
-    name: 'Single-Venue',
+    name: 'Single Scene',
     price: '$149',
-    per: '/ year',
-    desc: 'For one location that wants a signature look.',
+    per: 'one-time',
+    desc: 'One forest loop, licensed for a single venue.',
     features: [
-      'One collection of your choice',
-      '4K masters, licensed for one address',
-      'Unlimited in-venue plays',
-      'Commercial public-display license',
+      'One 4K forest-bathing loop',
+      'Single-venue commercial display license',
+      'Unlimited in-venue plays, forever',
+      'Ships silent — add your own audio',
     ],
-    cta: 'License Single-Venue',
+    cta: 'License a scene',
   },
   {
-    name: 'Multi-Venue',
-    price: '$499',
-    per: '/ year',
+    name: 'A Collection',
+    price: '$399',
+    per: 'one-time',
     featured: true,
-    flag: 'Most popular',
+    flag: 'Best value',
     primary: true,
-    desc: 'For small groups and franchises, up to 5 locations.',
+    desc: 'A full themed collection of forest scenes.',
     features: [
-      'Every collection in the catalog',
-      'Licensed for up to 5 addresses',
-      'New scenes added each season',
+      'A whole collection of loops (e.g. Ancient Grove)',
+      'Single-venue commercial display license',
+      'Free updates to those scenes',
+      'Ships silent — add your own audio',
+    ],
+    cta: 'License a collection',
+  },
+  {
+    name: 'Full Forest Library',
+    price: '$899',
+    per: 'one-time',
+    desc: 'Every loop across all four forest collections.',
+    features: [
+      'All 12 loops, all four collections',
+      'Single-venue commercial display license',
+      'New forest scenes as they’re added',
       'Priority email support',
     ],
-    cta: 'License Multi-Venue',
-  },
-  {
-    name: 'Enterprise',
-    price: 'Custom',
-    desc: 'For chains, signage networks, and brand rollouts.',
-    features: [
-      'Unlimited locations & CMS delivery',
-      'Custom & branded scene commissions',
-      'Master-services agreement & invoicing',
-      'Dedicated account manager',
-    ],
-    cta: 'Talk to us',
+    cta: 'License the library',
   },
 ]
 
@@ -76,10 +77,10 @@ const Pricing: React.FC = () => {
       <div className="ss-wrap">
         <div className="ss-section-head" style={{ maxWidth: '680px' }}>
           <span className="ss-eyebrow">Licensing</span>
-          <h2>Straightforward commercial licensing.</h2>
+          <h2>One-time pricing. Yours to play, forever.</h2>
           <p>
-            Every tier includes a commercial public-display license and unlimited in-venue plays.
-            Prices below are placeholders — swap for your live rates.
+            Buy once and keep it — no subscription, no per-screen fee. Every purchase includes a
+            written commercial display license and unlimited in-venue plays.
           </p>
         </div>
 
@@ -92,7 +93,6 @@ const Pricing: React.FC = () => {
                 <span>{t.price}</span>
                 {t.per && <span className="ss-per">{t.per}</span>}
               </div>
-              <div className="ss-ph">placeholder price</div>
               <p className="ss-tdesc">{t.desc}</p>
               <ul>
                 {t.features.map((f) => (
@@ -110,6 +110,11 @@ const Pricing: React.FC = () => {
             </div>
           ))}
         </div>
+
+        <p className="ss-tdesc" style={{ textAlign: 'center', margin: '18px auto 0', maxWidth: '620px' }}>
+          More than one location? Multi-venue and franchise licensing starts at $399, and an
+          optional matched forest soundscape can be added to any scene.
+        </p>
 
         <div className="ss-badge-row">
           <span className="ss-mini-badge">

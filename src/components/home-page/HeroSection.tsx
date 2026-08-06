@@ -7,14 +7,14 @@ const Hero: React.FC = () => {
       <div className="ss-hero-glow" aria-hidden="true" />
       <div className="ss-wrap ss-hero-grid">
         <div className="ss-hero-copy">
-          <span className="ss-eyebrow">Living scenery for calm commercial spaces</span>
+          <span className="ss-eyebrow">Forest bathing for calm commercial spaces</span>
           <h1>
-            Turn every screen into a window onto <em>somewhere calmer</em>.
+            Turn every screen into a window onto <em>the forest</em>.
           </h1>
           <p className="ss-lead">
-            Seamless 4K ambient nature loops, curated into collections and licensed for your bar,
-            spa, studio, lobby, or waiting room. No subscription to a streaming box. Just download
-            and play.
+            Seamless 4K forest scenes — the quiet of shinrin-yoku, curated into collections and
+            licensed for your spa, studio, bar, lobby, or waiting room. No streaming box, no
+            subscription. Just download and play.
           </p>
           <div className="ss-hero-cta">
             <a className="ss-btn ss-btn-primary ss-focus" href="#pricing">
@@ -43,11 +43,11 @@ const Hero: React.FC = () => {
         <div className="ss-hero-showcase">
           <ScenePanel
             variant="verdant"
-            collectionLabel="Verdant Sanctuary"
+            collectionLabel="Ancient Grove"
             name="Fern Cathedral"
-            sub="A shaft of warm light through a slow canopy"
+            sub="Light shafts through a towering fern canopy"
             runtime="Seamless loop"
-            ariaLabel="Placeholder for a 4K nature loop: a shaft of warm light through a fern canopy, Verdant Sanctuary collection"
+            ariaLabel="Placeholder for a 4K forest loop: light shafts through a fern canopy, Ancient Grove collection"
           />
           <div className="ss-float ss-tl" aria-hidden="true">
             <span className="ss-dot" /> Playing on Lobby TV · 4K

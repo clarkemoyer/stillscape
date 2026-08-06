@@ -1,9 +1,9 @@
-// Stillscape catalog — the 12 scenes across 4 collections.
-// Source of truth: C:\vscode\stillscape\catalog\scenes.csv (names + moods),
-// presented in the index.html visual style. Each scene maps to a CSS-gradient
-// "scene variant" (there are no bitmap images by design).
+// Stillscape catalog — 12 forest-bathing (shinrin-yoku) scenes across 4
+// all-forest collections. Every scene takes place inside a forest.
+// Source of truth: C:\vscode\stillscape\catalog\scenes.csv.
+// Each scene maps to a CSS-gradient "scene variant" (no bitmap images by design).
 
-export type CollectionKey = 'water' | 'ember' | 'verdant' | 'coastal'
+export type CollectionKey = 'grove' | 'mossfog' | 'brook' | 'light'
 export type SceneVariant = 'water' | 'ember' | 'verdant' | 'coastal' | 'mist' | 'dusk'
 
 export interface Collection {
@@ -20,99 +20,99 @@ export interface Scene {
 }
 
 export const collections: Collection[] = [
-  { key: 'water', label: 'Water & Stone' },
-  { key: 'ember', label: 'Ember & Hearth' },
-  { key: 'verdant', label: 'Verdant Sanctuary' },
-  { key: 'coastal', label: 'Coastal Calm' },
+  { key: 'grove', label: 'Ancient Grove' },
+  { key: 'mossfog', label: 'Mist & Moss' },
+  { key: 'brook', label: 'Forest Water' },
+  { key: 'light', label: 'Forest Light' },
 ]
 
 export const scenes: Scene[] = [
-  // Water & Stone
-  {
-    name: 'Mossveil Falls',
-    collection: 'water',
-    collectionLabel: 'Water & Stone',
-    sub: 'A grotto waterfall breathing cool mist',
-    variant: 'water',
-  },
-  {
-    name: 'Slatebrook Shallows',
-    collection: 'water',
-    collectionLabel: 'Water & Stone',
-    sub: 'Clear stream over pale river stones',
-    variant: 'water',
-  },
-  {
-    name: 'The Onsen Stone',
-    collection: 'water',
-    collectionLabel: 'Water & Stone',
-    sub: 'Steam curling off a warm spring at blue hour',
-    variant: 'mist',
-  },
-  // Ember & Hearth
-  {
-    name: 'Hearthlight Cabin',
-    collection: 'ember',
-    collectionLabel: 'Ember & Hearth',
-    sub: 'A slow fire throwing warm flicker',
-    variant: 'ember',
-  },
-  {
-    name: 'Candle Apothecary',
-    collection: 'ember',
-    collectionLabel: 'Ember & Hearth',
-    sub: 'Pillar candles guttering against amber glass',
-    variant: 'ember',
-  },
-  {
-    name: 'Lantern Snowfall',
-    collection: 'ember',
-    collectionLabel: 'Ember & Hearth',
-    sub: 'A warm lantern as fine snow drifts by night',
-    variant: 'dusk',
-  },
-  // Verdant Sanctuary
+  // Ancient Grove — old-growth cathedral forest
   {
     name: 'Fern Cathedral',
-    collection: 'verdant',
-    collectionLabel: 'Verdant Sanctuary',
-    sub: 'A shaft of light through a canopy of ferns',
+    collection: 'grove',
+    collectionLabel: 'Ancient Grove',
+    sub: 'Light shafts through a towering fern canopy',
     variant: 'verdant',
   },
   {
-    name: 'Monsoon Glass',
-    collection: 'verdant',
-    collectionLabel: 'Verdant Sanctuary',
-    sub: 'Warm rain streaming down a greenhouse pane',
-    variant: 'verdant',
-  },
-  {
-    name: 'Koi Reflection',
-    collection: 'verdant',
-    collectionLabel: 'Verdant Sanctuary',
-    sub: 'Slow koi beneath still water at golden hour',
+    name: 'Redwood Hush',
+    collection: 'grove',
+    collectionLabel: 'Ancient Grove',
+    sub: 'Dust motes drifting between colossal trunks',
     variant: 'mist',
   },
-  // Coastal Calm
   {
-    name: 'Tidepool Dawn',
-    collection: 'coastal',
-    collectionLabel: 'Coastal Calm',
-    sub: 'Gentle swells breathing over dark rock',
-    variant: 'coastal',
+    name: 'The Elder Oak',
+    collection: 'grove',
+    collectionLabel: 'Ancient Grove',
+    sub: 'One ancient oak, leaves turning in slow air',
+    variant: 'verdant',
+  },
+  // Mist & Moss — foggy, wet, mossy forest
+  {
+    name: 'Mossveil Hollow',
+    collection: 'mossfog',
+    collectionLabel: 'Mist & Moss',
+    sub: 'Fog threading over moss-draped boulders',
+    variant: 'mist',
   },
   {
-    name: 'Harbor Mist',
-    collection: 'coastal',
-    collectionLabel: 'Coastal Calm',
-    sub: 'Fog drifting over a glassy harbor',
-    variant: 'coastal',
+    name: 'Cloud Forest Drift',
+    collection: 'mossfog',
+    collectionLabel: 'Mist & Moss',
+    sub: 'Low cloud weaving between dark trunks',
+    variant: 'mist',
   },
   {
-    name: 'Seagrass Drift',
-    collection: 'coastal',
-    collectionLabel: 'Coastal Calm',
-    sub: 'Green seagrass swaying in clear shallows',
+    name: 'Rainlace Canopy',
+    collection: 'mossfog',
+    collectionLabel: 'Mist & Moss',
+    sub: 'Soft rain beading and falling from broad leaves',
+    variant: 'verdant',
+  },
+  // Forest Water — streams & falls within the forest
+  {
+    name: 'Emerald Falls',
+    collection: 'brook',
+    collectionLabel: 'Forest Water',
+    sub: 'A small fall into a mossy forest pool',
+    variant: 'water',
+  },
+  {
+    name: 'Brookstone Bend',
+    collection: 'brook',
+    collectionLabel: 'Forest Water',
+    sub: 'A clear stream folding over pale stones',
+    variant: 'water',
+  },
+  {
+    name: 'Birch Creek Shallows',
+    collection: 'brook',
+    collectionLabel: 'Forest Water',
+    sub: 'Sun-dappled shallows among white birch',
+    variant: 'water',
+  },
+  // Forest Light — the forest at different times & weather
+  {
+    name: 'Goldhour Pines',
+    collection: 'light',
+    collectionLabel: 'Forest Light',
+    sub: 'Warm low sun raking through a pine stand',
+    variant: 'ember',
+  },
+  {
+    name: 'Fireflies at Dusk',
+    collection: 'light',
+    collectionLabel: 'Forest Light',
+    sub: 'A forest clearing lit by drifting fireflies',
+    variant: 'dusk',
+  },
+  {
+    name: 'Snowfall Cedars',
+    collection: 'light',
+    collectionLabel: 'Forest Light',
+    sub: 'Fine snow settling through still cedars',
     variant: 'dusk',
   },
 ]

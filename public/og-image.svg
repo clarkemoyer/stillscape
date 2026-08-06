@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Stillscape — forest bathing for calm commercial spaces">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a1712"/>
+      <stop offset="1" stop-color="#050d0a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.42" r="0.55">
+      <stop offset="0" stop-color="#5fd6c4" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#5fd6c4" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- pine silhouettes along the base -->
+  <g fill="#0f251d">
+    <path d="M120 630 L120 430 L60 630 Z M120 480 L40 630 H200 Z"/>
+    <path d="M1080 630 L1080 410 L1010 630 Z M1080 470 L1000 630 H1160 Z"/>
+    <path d="M990 630 L990 470 L945 630 Z"/>
+    <path d="M210 630 L210 490 L165 630 Z"/>
+  </g>
+
+  <!-- pine mark -->
+  <g fill="none" stroke="#5fd6c4" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" transform="translate(566 120) scale(1.05)">
+    <path d="M32 11 L23 27 H41 Z"/>
+    <path d="M32 21 L19 40 H45 Z"/>
+    <path d="M32 31 L15 53 H49 Z"/>
+  </g>
+
+  <text x="600" y="330" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="96" font-weight="300" letter-spacing="2" fill="#eef3f1">Stillscape</text>
+  <text x="600" y="392" text-anchor="middle" font-family="Georgia, serif" font-size="30" letter-spacing="6" fill="#5fd6c4" opacity="0.9">FOREST BATHING FOR CALM COMMERCIAL SPACES</text>
+  <text x="600" y="470" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#a6bfb7">Seamless 4K forest loops · licensed for your venue · ships silent</text>
+</svg>
