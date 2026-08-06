@@ -53,6 +53,7 @@ const Collections: React.FC = () => {
                 sub={s.sub}
                 runtime="Seamless"
                 videoSrc={s.video ? assetPath(`/videos/${s.video}-tile.mp4`) : undefined}
+                fullSrc={s.video ? assetPath(`/videos/${s.video}.mp4`) : undefined}
                 poster={s.video ? assetPath(`/posters/${s.video}.jpg`) : undefined}
                 ariaLabel={
                   s.video

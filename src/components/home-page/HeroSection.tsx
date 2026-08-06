@@ -1,6 +1,9 @@
 import React from 'react'
 import ScenePanel from './ScenePanel'
+import { LightboxTrigger } from './Lightbox'
 import { assetPath } from '@/lib/assetPath'
+
+const HERO_REEL_SRC = assetPath('/videos/fireflies-dusk.mp4')
 
 const Hero: React.FC = () => {
   return (
@@ -21,9 +24,13 @@ const Hero: React.FC = () => {
             <a className="ss-btn ss-btn-primary ss-focus" href="#pricing">
               License a collection
             </a>
-            <a className="ss-btn ss-btn-ghost ss-focus" href="#reel">
+            <LightboxTrigger
+              src={HERO_REEL_SRC}
+              title="Fireflies at Dusk — Forest Light"
+              className="ss-btn ss-btn-ghost ss-focus"
+            >
               <span aria-hidden="true">▶</span>&nbsp;Watch the reel
-            </a>
+            </LightboxTrigger>
           </div>
           <div className="ss-hero-meta">
             <div className="ss-m">
@@ -48,7 +55,8 @@ const Hero: React.FC = () => {
             name="Fireflies at Dusk"
             sub="Drifting fireflies in a blue-hour grove"
             runtime="Seamless loop"
-            videoSrc={assetPath('/videos/fireflies-dusk.mp4')}
+            videoSrc={assetPath('/videos/fireflies-dusk-tile.mp4')}
+            fullSrc={HERO_REEL_SRC}
             poster={assetPath('/posters/fireflies-dusk.jpg')}
             ariaLabel="A 4K forest loop: fireflies drifting through a blue-hour grove, Ancient Grove collection"
           />

@@ -1501,3 +1501,167 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* =========================================================================
+   STILLSCAPE — watchable scene tiles + full-screen video lightbox
+   ========================================================================= */
+
+/* A tile with footage reads as clickable: pointer cursor, a lift + glow on
+   hover/focus, and a persistent "▶ Watch" pill that brightens on hover. */
+.ss-scene.ss-watchable {
+  cursor: pointer;
+  transition:
+    transform 0.3s var(--ss-ease),
+    box-shadow 0.3s var(--ss-ease);
+}
+.ss-scene.ss-watchable:hover,
+.ss-scene.ss-watchable:focus-within {
+  transform: translateY(-3px);
+  box-shadow:
+    var(--ss-bloom),
+    0 0 50px -14px color-mix(in srgb, var(--ss-glow) 55%, transparent);
+}
+
+/* The whole-tile overlay button — the real, focusable "Watch" control.
+   Transparent so the inline preview and the scene text show through. */
+.ss-scene-watch {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: inherit;
+  cursor: pointer;
+}
+/* Inset focus ring — an outside outline would be clipped by the tile's
+   overflow:hidden, so draw the indicator inside the tile instead. */
+.ss-scene-watch:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2.5px var(--ss-accent);
+}
+
+/* Visual affordance inside the tile (aria-hidden; the overlay carries the
+   accessible name). Styled like the preview pill but always visible. */
+.ss-watch-pill {
+  margin-top: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  align-self: flex-start;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.34);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  padding: 0.5em 0.95em;
+  border-radius: 999px;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  transition:
+    background 0.2s,
+    box-shadow 0.25s var(--ss-ease),
+    transform 0.2s;
+}
+.ss-scene.ss-watchable:hover .ss-watch-pill,
+.ss-scene.ss-watchable:focus-within .ss-watch-pill {
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 22px -6px color-mix(in srgb, var(--ss-glow) 80%, transparent);
+  transform: translateY(-1px);
+}
+
+/* ---------- Lightbox ---------- */
+.ss-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: clamp(12px, 3vw, 44px);
+  background: rgba(3, 8, 7, 0.84);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  backdrop-filter: blur(10px) saturate(120%);
+  animation: ss-lb-fade 0.28s var(--ss-ease) both;
+}
+.ss-lightbox-dialog {
+  position: relative;
+  width: min(1120px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  animation: ss-lb-pop 0.32s var(--ss-ease) both;
+}
+.ss-lightbox-video {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 82vh;
+  border-radius: var(--ss-radius);
+  background: #000;
+  border: 1px solid color-mix(in srgb, var(--ss-glow) 18%, transparent);
+  box-shadow:
+    var(--ss-shadow-lg),
+    0 0 90px -26px color-mix(in srgb, var(--ss-glow) 50%, transparent);
+}
+.ss-lightbox-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: color-mix(in srgb, var(--ss-forest-deep) 68%, transparent);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  transition:
+    transform 0.25s var(--ss-ease),
+    border-color 0.2s,
+    background 0.2s;
+}
+.ss-lightbox-close:hover {
+  transform: rotate(90deg);
+  border-color: var(--ss-accent);
+  background: color-mix(in srgb, var(--ss-forest-deep) 85%, transparent);
+}
+.ss-lightbox-close svg {
+  width: 20px;
+  height: 20px;
+}
+.ss-lightbox-title {
+  color: var(--ss-ink-soft);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+@keyframes ss-lb-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes ss-lb-pop {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ss-lightbox,
+  .ss-lightbox-dialog {
+    animation: none;
+  }
+}

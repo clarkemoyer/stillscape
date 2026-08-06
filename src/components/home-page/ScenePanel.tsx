@@ -1,5 +1,8 @@
+'use client'
+
 import React from 'react'
 import type { SceneVariant } from './scenes'
+import { useLightbox } from './Lightbox'
 
 const variantClass: Record<SceneVariant, string> = {
   water: 's-water',
@@ -18,16 +21,18 @@ interface ScenePanelProps {
   runtime?: string
   className?: string
   ariaLabel: string
-  /** When set, real looping footage plays inside the panel instead of the CSS gradient. */
+  /** Light inline preview loop (the `-tile.mp4`) that autoplays muted in the tile. */
   videoSrc?: string
+  /** Higher-res master played full-screen with sound in the lightbox. Falls back to videoSrc. */
+  fullSrc?: string
   poster?: string
 }
 
 /**
- * A luminous CSS-gradient "scene tile" standing in for a 4K nature loop.
- * There are no bitmap images by design — the glow, top-edge light, inner
- * vignette and the single ambient shimmer all come from CSS (see globals.css).
- * The preview control is a non-functional placeholder (no real footage yet).
+ * A luminous scene tile. When it has footage (videoSrc), a muted inline loop
+ * autoplays as a preview and the whole tile becomes a "▶ Watch" control that
+ * opens the shared lightbox to play the master full screen, with sound. When
+ * there's no footage yet, it falls back to the CSS-gradient placeholder.
  */
 const ScenePanel: React.FC<ScenePanelProps> = ({
   variant,
@@ -38,10 +43,19 @@ const ScenePanel: React.FC<ScenePanelProps> = ({
   className = '',
   ariaLabel,
   videoSrc,
+  fullSrc,
   poster,
 }) => {
+  const { openLightbox } = useLightbox()
+  const watchSrc = fullSrc ?? videoSrc
+  const watchable = Boolean(watchSrc)
+
   return (
-    <div className={`ss-scene ${variantClass[variant]} ${className}`} role="img" aria-label={ariaLabel}>
+    <div
+      className={`ss-scene ${variantClass[variant]} ${watchable ? 'ss-watchable' : ''} ${className}`}
+      role={watchable ? undefined : 'img'}
+      aria-label={watchable ? undefined : ariaLabel}
+    >
       {videoSrc && (
         <video
           autoPlay
@@ -64,7 +78,10 @@ const ScenePanel: React.FC<ScenePanelProps> = ({
           <source src={videoSrc} type="video/mp4" />
         </video>
       )}
-      <div className="ss-scene-body" style={videoSrc ? { position: 'relative', zIndex: 1 } : undefined}>
+      <div
+        className="ss-scene-body"
+        style={videoSrc ? { position: 'relative', zIndex: 1 } : undefined}
+      >
         <div className="ss-top">
           <span className="ss-badge">{collectionLabel}</span>
           <span className="ss-runtime">{runtime}</span>
@@ -72,15 +89,33 @@ const ScenePanel: React.FC<ScenePanelProps> = ({
         <div className="ss-bottom">
           <h3>{name}</h3>
           <div className="ss-sub">{sub}</div>
-          <button
-            className="ss-preview ss-focus"
-            type="button"
-            aria-label={videoSrc ? `${name} loop, playing` : `Preview ${name} loop (placeholder — no footage yet)`}
-          >
-            <span className="ss-tri" aria-hidden="true" /> {videoSrc ? 'now playing' : 'loop preview'}
-          </button>
+          {watchable ? (
+            // Visual affordance only — the whole-tile overlay button below is
+            // the real, focusable control (avoids nesting interactive elements).
+            <span className="ss-watch-pill" aria-hidden="true">
+              <span className="ss-tri" /> Watch
+            </span>
+          ) : (
+            <button
+              className="ss-preview ss-focus"
+              type="button"
+              aria-label={`Preview ${name} loop (placeholder — no footage yet)`}
+            >
+              <span className="ss-tri" aria-hidden="true" /> loop preview
+            </button>
+          )}
         </div>
       </div>
+
+      {watchable && (
+        <button
+          type="button"
+          className="ss-scene-watch ss-focus"
+          aria-label={`Watch ${name} — full screen, with sound`}
+          onClick={(e) => openLightbox(watchSrc as string, { title: name, trigger: e.currentTarget })}
+        />
+      )}
+
       {!videoSrc && (
         <span className="ss-placeholder-note" aria-hidden="true">
           footage placeholder

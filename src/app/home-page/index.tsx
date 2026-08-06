@@ -1,4 +1,5 @@
 import React from 'react'
+import { LightboxProvider } from '@/components/home-page/Lightbox'
 import Hero from '@/components/home-page/HeroSection'
 import TrustStrip from '@/components/home-page/TrustStrip'
 import ProblemSolution from '@/components/home-page/ProblemSolution'
@@ -14,20 +15,22 @@ import FinalCta from '@/components/home-page/FinalCta'
 
 const index = () => {
   return (
-    <div>
-      <Hero />
-      <TrustStrip />
-      <ProblemSolution />
-      <HowItWorks />
-      <InSitu />
-      <Collections />
-      <Venues />
-      <Pricing />
-      <Reel />
-      <Proof />
-      <Faq />
-      <FinalCta />
-    </div>
+    <LightboxProvider>
+      <div>
+        <Hero />
+        <TrustStrip />
+        <ProblemSolution />
+        <HowItWorks />
+        <InSitu />
+        <Collections />
+        <Venues />
+        <Pricing />
+        <Reel />
+        <Proof />
+        <Faq />
+        <FinalCta />
+      </div>
+    </LightboxProvider>
   )
 }
 
