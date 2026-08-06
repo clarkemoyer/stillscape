@@ -18,6 +18,9 @@ interface ScenePanelProps {
   runtime?: string
   className?: string
   ariaLabel: string
+  /** When set, real looping footage plays inside the panel instead of the CSS gradient. */
+  videoSrc?: string
+  poster?: string
 }
 
 /**
@@ -34,10 +37,34 @@ const ScenePanel: React.FC<ScenePanelProps> = ({
   runtime = 'Seamless loop',
   className = '',
   ariaLabel,
+  videoSrc,
+  poster,
 }) => {
   return (
     <div className={`ss-scene ${variantClass[variant]} ${className}`} role="img" aria-label={ariaLabel}>
-      <div className="ss-scene-body">
+      {videoSrc && (
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster={poster}
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            borderRadius: 'inherit',
+            zIndex: 0,
+          }}
+        >
+          <source src={videoSrc} type="video/mp4" />
+        </video>
+      )}
+      <div className="ss-scene-body" style={videoSrc ? { position: 'relative', zIndex: 1 } : undefined}>
         <div className="ss-top">
           <span className="ss-badge">{collectionLabel}</span>
           <span className="ss-runtime">{runtime}</span>
@@ -48,15 +75,17 @@ const ScenePanel: React.FC<ScenePanelProps> = ({
           <button
             className="ss-preview ss-focus"
             type="button"
-            aria-label={`Preview ${name} loop (placeholder — no footage yet)`}
+            aria-label={videoSrc ? `${name} loop, playing` : `Preview ${name} loop (placeholder — no footage yet)`}
           >
-            <span className="ss-tri" aria-hidden="true" /> loop preview
+            <span className="ss-tri" aria-hidden="true" /> {videoSrc ? 'now playing' : 'loop preview'}
           </button>
         </div>
       </div>
-      <span className="ss-placeholder-note" aria-hidden="true">
-        footage placeholder
-      </span>
+      {!videoSrc && (
+        <span className="ss-placeholder-note" aria-hidden="true">
+          footage placeholder
+        </span>
+      )}
     </div>
   )
 }

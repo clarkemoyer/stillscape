@@ -1,5 +1,6 @@
 import React from 'react'
 import ScenePanel from './ScenePanel'
+import { assetPath } from '@/lib/assetPath'
 
 const Hero: React.FC = () => {
   return (
@@ -42,12 +43,14 @@ const Hero: React.FC = () => {
 
         <div className="ss-hero-showcase">
           <ScenePanel
-            variant="verdant"
+            variant="dusk"
             collectionLabel="Ancient Grove"
-            name="Fern Cathedral"
-            sub="Light shafts through a towering fern canopy"
+            name="Fireflies at Dusk"
+            sub="Drifting fireflies in a blue-hour grove"
             runtime="Seamless loop"
-            ariaLabel="Placeholder for a 4K forest loop: light shafts through a fern canopy, Ancient Grove collection"
+            videoSrc={assetPath('/videos/fireflies-dusk.mp4')}
+            poster={assetPath('/posters/fireflies-dusk.jpg')}
+            ariaLabel="A 4K forest loop: fireflies drifting through a blue-hour grove, Ancient Grove collection"
           />
           <div className="ss-float ss-tl" aria-hidden="true">
             <span className="ss-dot" /> Playing on Lobby TV · 4K
