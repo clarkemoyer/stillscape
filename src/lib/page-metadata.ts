@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { siteConfig, siteUrl, twitterSite } from '@/lib/site.config'
-import { assetPath } from '@/lib/assetPath'
 
 // Page-level metadata builder. Next.js merges metadata shallowly per
 // top-level key, so a page that sets only `title`/`description` inherits the
@@ -13,8 +12,13 @@ import { assetPath } from '@/lib/assetPath'
  * The site's social-card image, shared by the root layout and every
  * pageMetadata() call so the OG image is defined exactly once.
  */
+// NOTE: this URL is resolved by Next against `metadataBase` (siteConfig.url),
+// which already includes the /stillscape base path — so it must NOT be run
+// through assetPath, or the base path would be doubled
+// (…/stillscape/stillscape/og-image.png). Favicon <link>s in layout.tsx are
+// the opposite: they are raw head links and DO need assetPath.
 export const OG_IMAGE = {
-  url: assetPath('/og-image.png'),
+  url: '/og-image.png',
   type: 'image/png',
   width: 1200,
   height: 675,
