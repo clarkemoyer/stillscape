@@ -3,6 +3,7 @@ import Hero from '@/components/home-page/HeroSection'
 import TrustStrip from '@/components/home-page/TrustStrip'
 import ProblemSolution from '@/components/home-page/ProblemSolution'
 import HowItWorks from '@/components/home-page/HowItWorks'
+import InSitu from '@/components/home-page/InSitu'
 import Collections from '@/components/home-page/Collections'
 import Venues from '@/components/home-page/Venues'
 import Pricing from '@/components/home-page/Pricing'
@@ -18,6 +19,7 @@ const index = () => {
       <TrustStrip />
       <ProblemSolution />
       <HowItWorks />
+      <InSitu />
       <Collections />
       <Venues />
       <Pricing />

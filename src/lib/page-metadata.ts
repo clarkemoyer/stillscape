@@ -14,10 +14,10 @@ import { assetPath } from '@/lib/assetPath'
  * pageMetadata() call so the OG image is defined exactly once.
  */
 export const OG_IMAGE = {
-  url: assetPath('/og-image.svg'),
-  type: 'image/svg+xml',
+  url: assetPath('/og-image.png'),
+  type: 'image/png',
   width: 1200,
-  height: 630,
+  height: 675,
   alt: siteConfig.name,
 }
 
