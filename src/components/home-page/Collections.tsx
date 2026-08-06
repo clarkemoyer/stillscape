@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import ScenePanel from './ScenePanel'
 import { scenes, collections, type CollectionKey } from './scenes'
+import { assetPath } from '@/lib/assetPath'
 
 type Filter = CollectionKey | 'all'
 
@@ -51,12 +52,19 @@ const Collections: React.FC = () => {
                 name={s.name}
                 sub={s.sub}
                 runtime="Seamless"
-                ariaLabel={`Placeholder 4K loop: ${s.sub}, ${s.collectionLabel} collection`}
+                videoSrc={s.video ? assetPath(`/videos/${s.video}-tile.mp4`) : undefined}
+                poster={s.video ? assetPath(`/posters/${s.video}.jpg`) : undefined}
+                ariaLabel={
+                  s.video
+                    ? `4K forest loop: ${s.sub}, ${s.collectionLabel} collection`
+                    : `Placeholder 4K loop: ${s.sub}, ${s.collectionLabel} collection`
+                }
               />
             ))}
         </div>
         <p style={{ marginTop: '1.4rem', color: 'var(--ss-ink-faint)', fontSize: '0.85rem' }}>
-          Scene tiles above are styled placeholders standing in for real 4K footage previews.
+          Tiles marked “now playing” are real mastered loops; the rest are styled previews while
+          their footage is in production.
         </p>
       </div>
     </section>

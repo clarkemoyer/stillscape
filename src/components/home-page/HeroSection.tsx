@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
         <div className="ss-hero-showcase">
           <ScenePanel
             variant="dusk"
-            collectionLabel="Ancient Grove"
+            collectionLabel="Forest Light"
             name="Fireflies at Dusk"
             sub="Drifting fireflies in a blue-hour grove"
             runtime="Seamless loop"

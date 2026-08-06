@@ -1,7 +1,8 @@
 // Stillscape catalog — 12 forest-bathing (shinrin-yoku) scenes across 4
 // all-forest collections. Every scene takes place inside a forest.
 // Source of truth: C:\vscode\stillscape\catalog\scenes.csv.
-// Each scene maps to a CSS-gradient "scene variant" (no bitmap images by design).
+// Scenes with a `video` id have real mastered footage (public/videos/<id>-tile.mp4
+// + public/posters/<id>.jpg); the rest fall back to the CSS-gradient variant.
 
 export type CollectionKey = 'grove' | 'mossfog' | 'brook' | 'light'
 export type SceneVariant = 'water' | 'ember' | 'verdant' | 'coastal' | 'mist' | 'dusk'
@@ -17,6 +18,8 @@ export interface Scene {
   collectionLabel: string
   sub: string
   variant: SceneVariant
+  /** Base id of mastered generative footage, when available. */
+  video?: string
 }
 
 export const collections: Collection[] = [
@@ -34,6 +37,7 @@ export const scenes: Scene[] = [
     collectionLabel: 'Ancient Grove',
     sub: 'Light shafts through a towering fern canopy',
     variant: 'verdant',
+    video: 'fern-canopy',
   },
   {
     name: 'Redwood Hush',
@@ -56,6 +60,7 @@ export const scenes: Scene[] = [
     collectionLabel: 'Mist & Moss',
     sub: 'Fog threading over moss-draped boulders',
     variant: 'mist',
+    video: 'mossveil-fog',
   },
   {
     name: 'Cloud Forest Drift',
@@ -78,6 +83,7 @@ export const scenes: Scene[] = [
     collectionLabel: 'Forest Water',
     sub: 'A small fall into a mossy forest pool',
     variant: 'water',
+    video: 'emerald-falls',
   },
   {
     name: 'Brookstone Bend',
@@ -100,13 +106,15 @@ export const scenes: Scene[] = [
     collectionLabel: 'Forest Light',
     sub: 'Warm low sun raking through a pine stand',
     variant: 'ember',
+    video: 'goldhour-pines',
   },
   {
     name: 'Fireflies at Dusk',
     collection: 'light',
     collectionLabel: 'Forest Light',
-    sub: 'A forest clearing lit by drifting fireflies',
+    sub: 'Drifting fireflies in a blue-hour grove',
     variant: 'dusk',
+    video: 'fireflies-dusk',
   },
   {
     name: 'Snowfall Cedars',
@@ -114,5 +122,6 @@ export const scenes: Scene[] = [
     collectionLabel: 'Forest Light',
     sub: 'Fine snow settling through still cedars',
     variant: 'dusk',
+    video: 'snowfall-cedars',
   },
 ]
