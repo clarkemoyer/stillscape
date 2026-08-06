@@ -4,7 +4,7 @@ const venues = [
   {
     icon: '🍸',
     title: 'Craft bars & lounges',
-    body: 'Trade the sports feed for slow embers or a moody coastline. Sets the tone without competing with conversation.',
+    body: 'Trade the sports feed for a misty grove or firelit forest clearing. Sets the tone without competing with conversation.',
   },
   {
     icon: '🧖',

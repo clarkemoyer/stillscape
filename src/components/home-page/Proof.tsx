@@ -2,7 +2,7 @@ import React from 'react'
 
 const quotes = [
   {
-    text: 'We swapped the sports channel behind the bar for the Ember & Hearth loop. Guests linger longer and the room finally feels like ours.',
+    text: 'We swapped the sports channel behind the bar for the Ancient Grove loop. Guests linger longer and the room finally feels like ours.',
     name: 'Placeholder Name',
     role: 'Owner, Craft Lounge',
   },

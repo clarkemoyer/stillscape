@@ -1,10 +1,10 @@
 import React from 'react'
 
 const catalog = [
-  { label: 'Water & Stone', href: '#collections' },
-  { label: 'Ember & Hearth', href: '#collections' },
-  { label: 'Verdant Sanctuary', href: '#collections' },
-  { label: 'Coastal Calm', href: '#collections' },
+  { label: 'Ancient Grove', href: '#collections' },
+  { label: 'Mist & Moss', href: '#collections' },
+  { label: 'Forest Water', href: '#collections' },
+  { label: 'Forest Light', href: '#collections' },
 ]
 
 const company = [
